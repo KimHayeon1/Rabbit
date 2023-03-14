@@ -1,5 +1,5 @@
 /* animation */
-/* @keyframes rabbit {
+@keyframes rabbit {
 	50% {
 		transform: translate(-50% -50%);
 	}
@@ -92,7 +92,7 @@
     width: 0px;
     height: 0px;
   }
-} */
+}
 
 :root {
   --line-color: #a3704f;
