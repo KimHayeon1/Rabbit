@@ -1,0 +1,297 @@
+/* animation */
+/* @keyframes rabbit {
+	50% {
+		transform: translate(-50% -50%);
+	}
+	to {
+		transform: translate(-45%, -51%) rotate(10deg);
+	}
+}
+
+@keyframes earLeft {
+	30% {
+		transform: rotate(-80deg);
+	}
+	to {
+		transform: rotate(-10deg);
+	}
+}
+@keyframes earRight {
+	30% {
+		transform: rotate(50deg);
+	}
+	to {
+		transform: rotate(10deg);
+	}
+}
+
+@keyframes whisker-leftTop-rightBottom {
+	30% {
+		transform: rotate(25deg);
+	}
+	to {
+		transform: rotate(15deg);
+	}
+}
+@keyframes whisker-leftBottom-rightTop {
+	30% {
+		transform: rotate(-25deg);
+	}
+	to {
+		transform: rotate(-15deg);
+	}
+}
+
+@keyframes eyeRight {
+  50% {
+    top: 35%;
+		height: 22px;
+    width: 14px;
+  }
+  60% {
+    transform: translateX(-1px);
+  }
+	to {
+    top: 40%;
+		height: 8px;
+    width: 18px;
+    border-radius: 40%;
+    transform: rotate(20deg) translateX(-2px);
+	}
+}
+
+@keyframes eyeOpacity {
+	55% {
+		opacity: 1;
+	}
+	60% {
+		opacity: 0;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes cheek {
+	25% {
+		transform: scale(1);
+		background: pink;
+	}
+	to {
+		transform: scale(1.1);
+		background: rgb(243, 108, 108);
+	}
+}
+
+@keyframes tongue {
+  50% {
+    width: 18px;
+    height: 18px;
+  }
+  to {
+    width: 0px;
+    height: 0px;
+  }
+} */
+
+:root {
+  --line-color: #a3704f;
+}
+
+body {
+	background-color: rgb(218, 206, 239);
+  height: 100vh;
+  margin: 0;
+}
+
+.rabbit {
+	animation: rabbit 2s infinite alternate;
+	position: relative;
+	width: 600px;
+	height: 350px;
+  top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.ear,
+.face {
+	background-color: #fefefe;
+	border: 5px solid var(--line-color);
+}
+
+/* ear */
+.ear {
+	width: 70px;
+	height: 100px;
+	position: absolute;
+}
+.ear.left {
+	animation: earLeft 1.5s 1s infinite alternate;
+	transform-origin: 100% 100%;
+	border-radius: 100% 50% 0 50%;
+	transform: rotate(-10deg);
+	left: 35%;
+}
+.ear.right {
+	animation: earRight 1s infinite alternate;
+	transform-origin: 0% 100%;
+	border-radius: 50% 100% 50% 0;
+	transform: rotate(10deg);
+	right: 35%;
+}
+.ear::before {
+	content: "";
+	display: block;
+	position: absolute;
+  top: 10%;
+	width: 60%;
+	height: 100%;
+	background: pink;
+	border-radius: inherit;
+}
+.ear.right::before {
+  margin-left: 40%;
+}
+
+/* face */
+.face {
+	position: relative;
+	width: 320px;
+	height: 210px;
+	border-radius: 150px 150px 90px 90px;
+	top: 27%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+/* eye */
+.eye {
+	position: absolute;
+	width: 14px;
+	height: 22px;
+	top: 35%;
+	background: var(--line-color);
+}
+.eye.left {
+	left: 38%;
+	border-radius: 50% 50% 50% 80%;
+}
+.eye.right {
+	animation: eyeRight 2s infinite alternate;
+	right: 38%;
+	border-radius: 50% 50% 80% 50%;
+}
+.eye::before {
+	position: absolute;
+	content: "";
+	left: 60%;
+	width: 4px;
+	height: 10px;
+	top: 20%;
+	background: white;
+}
+.eye.left::before {
+	animation: eyeLeft 2s infinite alternate;
+	border-radius: inherit;
+}
+.eye.right::before {
+	animation: eyeOpacity 2s infinite alternate;
+	border-radius: inherit;
+}
+
+/* mouth */
+.mouth {
+  position: absolute;
+	left: 50%;
+  transform: translateX(-50%);
+	background-color: var(--line-color);
+}
+.mouth.nose {
+	width: 30px;
+	height: 15px;
+	border-radius: 5px 5px 20px 20px;
+	top: 55%;
+}
+.mouth.vertical {
+	top: 61%;
+	width: 5px;
+	height: 15px;
+	border-radius: 40%;
+}
+.mouth.left,
+.mouth.right {
+  top: 68%;
+  width: 20px;
+  height: 5px;
+  border-radius: 40%;
+}
+.mouth.left {
+  transform: translateX(-90%) rotate(-30deg);
+}
+.mouth.right {
+  transform: translateX(-5%) rotate(30deg);
+}
+.mouth.tongue {
+  animation: tongue 2s infinite alternate;
+  top: 67%;
+  width: 18px;
+	height: 18px;
+  border: 4px solid var(--line-color);
+  border-top: 0;
+	border-radius: 45%;
+	background-color: #ff8a8a;
+}
+
+/* whisker */
+.whisker {
+	width: 70px;
+	height: 5px;
+	background: var(--line-color);
+	border-radius: 40%;
+	position: absolute;
+}
+
+.whisker.top {
+	top: 43%;
+}
+.whisker.center {
+	top: 55%;
+}
+.whisker.bottom {
+	top: 68%;
+}
+.whisker.left {
+	left: -10%;
+}
+.whisker.right {
+	right: -10%;
+}
+
+.whisker.left.top,
+.whisker.right.bottom {
+	animation: whisker-leftTop-rightBottom 1s infinite alternate;
+	transform: rotate(15deg);
+}
+.whisker.left.bottom,
+.whisker.right.top {
+	animation: whisker-leftBottom-rightTop 1s infinite alternate;
+	transform: rotate(-20deg);
+}
+
+/* cheek */
+.cheek {
+	animation: cheek 2s infinite alternate;
+	position: absolute;
+	top: 45%;
+	width: 36px;
+	height: 24px;
+	border-radius: 50%;
+	background-color: pink;
+}
+.cheek.left {
+	left: 24%;
+}
+.cheek.right {
+	right: 24%;
+}
